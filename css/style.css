@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main{
+    flex-grow: 1;
+    justify-content: center;
+}
+
+h1{
+    font-family: 'Roboto';
+    font-weight: lighter;
+}
