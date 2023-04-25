@@ -60,7 +60,7 @@
         </div>
       </section>
       <section class="row">
-        <p>Opciones <button class="btn btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#modalAdminPelicula">
+        <p>Opciones <button class="btn btn-outline-primary ms-2" id="btnCrearPelicula">
           <i class="bi bi-clipboard-plus"></i></button>
         </p>
       </section>
@@ -164,7 +164,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="">
+            <form action="" id="form-pelicula">
               <div class="mb-3">
                 <label for="inputCodigo" class="form-label">Código</label>
                 <input type="text" id="inputCodigo" class="form-control" placeholder="123" disabled>
@@ -175,7 +175,7 @@
               </div>
               <div class="mb-3">
                 <label for="inputDescripcion">Descripción *</label>              
-                <textarea class="form-control" placeholder="Lorem, ipsum dolor sit amet consectetur adipisicing elit..." id="inputDescripcion"></textarea>
+                <textarea class="form-control" placeholder="Lorem, ipsum dolor sit amet consectetur adipisicing elit..." id="textareaDescripcion"></textarea>
               </div>   
               <div class="mb-3">
                 <label for="inputImagen" class="form-label">Imagen *</label>
@@ -206,10 +206,11 @@
                 <label for="inputReparto" class="form-label">Reparto <span class="text-secondary">(Separado por comas ,)</span></label>
                 <input type="text" id="inputReparto" class="form-control text-truncate d-inline-bloc" placeholder="Ej: Chris Pratt, Jack Black, Anya Taylor-Joy, Charlie Day, Keegan-Michael Key">
               </div>
+              <div class="alert alert-danger mt-3" role="alert" id="alerta">
+                asdkalsjdlkasjdlaksd jkashdkj
+              </div>
+              <button type="button" class="btn btn-primary">Guardar Cambios</button>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Guardar Cambios</button>
           </div>
         </div>
       </div>
@@ -223,6 +224,7 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/administrador.js" type="module"></script>
 </body>
 
 </html>
