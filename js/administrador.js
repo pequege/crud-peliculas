@@ -2,21 +2,26 @@ import Pelicula from "./classPelicula.js";
 import { resumenValidacion } from "./helpers.js";
 
 //variables globales
+const generos = ['Acción', 'Animación', 'Aventura', 'Comedia', 'Documental', 'Drama', 'Familiar',
+    'Fantasía', 'Historia', 'Horror', 'Misterio', 'Música', 'Romance', 'Ciencia ficción', 'Terror',
+    'Suspenso', 'Bélico', 'Western'];
 let formularioPelicula = document.getElementById('form-pelicula');
-let modalPelicula = new bootstrap.Modal(document.getElementById('modalPelicula'));
+let modalPelicula = new bootstrap.Modal(document.getElementById("modalPelicula"));
 const btnCrearPelicula = document.getElementById('btnCrearPelicula');
 
 //manejadores de eventos
 formularioPelicula.addEventListener('submit', prepararFormularioPeliculas);
-btnCrearPelicula.addEventListener('click', mostrarModalPelicula)
+btnCrearPelicula.addEventListener('click', mostrarModalPelicula);
+
 let listaPeliculas = [];
 let codigo = document.getElementById('inputCodigo'),
 titulo = document.getElementById('inputTitulo'),
 descripcion = document.getElementById('textareaDescripcion'),
 imagen = document.getElementById('inputImagen'),
 genero = document.getElementById('inputGenero'),
+anio = document.getElementById('inputAnio'),
 duracion = document.getElementById('inputDuracion'),
-Pais = document.getElementById('inputPais'),
+pais = document.getElementById('inputPais'),
 reparto = document.getElementById('inputReparto'),
 alert = document.getElementById('alerta');
 
@@ -28,7 +33,8 @@ function prepararFormularioPeliculas(e){
 
 function crearPelicula(){
     //validar datos
-    const resumen = resumenValidacion(titulo.value);
+    const resumen = resumenValidacion(titulo.value, descripcion.value, imagen.value, duracion.value, 
+        anio.value, pais.value);
 
     //quitar mensaje de error
     mostrarMensajeError(resumen);

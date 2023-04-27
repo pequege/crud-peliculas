@@ -27,18 +27,22 @@
             <a class="nav-link link-light" href="pages/administrador.html">Administrar</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle link-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-sun-fill"></i>
-            </a>
+            <button
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-moon-stars-fill" id="btnTheme"></i>
+            </button>
             <ul class="dropdown-menu">
               <li>
-                <button class="btn" id="btnThemeLight">
-                  <i class="bi bi-sun-fill dropdown-item"> Light</i>
+                <button class="dropdown-item" id="btnThemeDark">
+                  <i class="bi bi-moon-stars-fill"></i> Dark
                 </button>
               </li>
               <li>
-                <button class="btn" id="btnThemeDark">
-                  <i class="bi bi-sun-fill dropdown-item"> Dark</i> 
+                <button class="dropdown-item" id="btnThemeLight">
+                  <i class="bi bi-brightness-high-fill"></i>Light
                 </button>
               </li>
             </ul>
