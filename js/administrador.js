@@ -2,9 +2,6 @@ import Pelicula from "./classPelicula.js";
 import { resumenValidacion } from "./helpers.js";
 
 //variables globales
-const generos = ['Acción', 'Animación', 'Aventura', 'Comedia', 'Documental', 'Drama', 'Familiar',
-    'Fantasía', 'Historia', 'Horror', 'Misterio', 'Música', 'Romance', 'Ciencia ficción', 'Terror',
-    'Suspenso', 'Bélico', 'Western'];
 let formularioPelicula = document.getElementById('form-pelicula');
 let modalPelicula = new bootstrap.Modal(document.getElementById("modalPelicula"));
 const btnCrearPelicula = document.getElementById('btnCrearPelicula');
@@ -13,7 +10,6 @@ const btnCrearPelicula = document.getElementById('btnCrearPelicula');
 formularioPelicula.addEventListener('submit', prepararFormularioPeliculas);
 btnCrearPelicula.addEventListener('click', mostrarModalPelicula);
 
-let listaPeliculas = [];
 let codigo = document.getElementById('inputCodigo'),
 titulo = document.getElementById('inputTitulo'),
 descripcion = document.getElementById('textareaDescripcion'),
@@ -25,6 +21,14 @@ pais = document.getElementById('inputPais'),
 reparto = document.getElementById('inputReparto'),
 alert = document.getElementById('alerta');
 
+let listaPeliculas = JSON.parse(localStorage.getItem('listaPeliculas')) || [];
+if(listaPeliculas.length > 0){
+    listaPeliculas = listaPeliculas.map((pelicula) => new Pelicula(1, pelicula.titulo, pelicula.descripcion, pelicula.imagen, pelicula.genero));
+}
+console.log(listaPeliculas);
+
+cargaInicial();
+
 //funciones
 function prepararFormularioPeliculas(e){
     e.preventDefault();
@@ -33,29 +37,30 @@ function prepararFormularioPeliculas(e){
 
 function crearPelicula(){
     //validar datos
-    const resumen = resumenValidacion(titulo.value, descripcion.value, imagen.value, duracion.value, 
-        anio.value, pais.value);
-
+    const resumen = resumenValidacion(titulo.value, descripcion.value, imagen.value, genero.value, duracion.value, 
+        anio.value, pais.value, reparto.value);
     //quitar mensaje de error
     mostrarMensajeError(resumen);
     //si los datos son validos?
     if(resumen.length === 0){
         //crear pelicula
-        const peliculaEjemplo = new Pelicula(
-            "0001",
-            "El Padrino",
-            "La familia Corleone es una de las más poderosas de Nueva York en los años 40.",
-            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
-            "Drama/Crimen",
-            1972,
-            "2h 55min",
-            "Estados Unidos",
-            ["Marlon Brando", "Al Pacino", "James Caan"]
+        const peliculaNueva = new Pelicula(
+            undefined,
+            titulo.value,
+            descripcion.value,
+            imagen.value,
+            genero.value,
+            anio.value,
+            duracion.value,
+            pais.value,
+            reparto.value
         );
+        //agregar la pelicula en listaPeliculas
+        listaPeliculas.push(peliculaNueva);
+        //guardar listaPeliculas en localStorage
+        guardarEnLocalStorage();
+        limpiarFormulario();
     }
-    //agregar la pelicula en listaPeliculas
-
-    //guardar listaPeliculas en localStorage
 }
 
 function mostrarModalPelicula(){
@@ -69,4 +74,45 @@ function mostrarMensajeError(resumen){
     }else{
         alert.className = "alert  alert-danger mt-3 d-none";
     }
+}
+
+function guardarEnLocalStorage(){
+    localStorage.setItem('listaPeliculas', JSON.stringify(listaPeliculas));
+}
+
+function limpiarFormulario(){
+    formularioPelicula.reset();
+}
+
+function cargaInicial(){
+    if(listaPeliculas.length > 0){
+        listaPeliculas.map((pelicula) => crearFila(pelicula))
+    }
+}
+
+function crearFila(pelicula){
+    let tablaPelicula = document.getElementById('tablaPelicula');
+    tablaPelicula.innerHTML += `
+    <tr>
+        <th scope="row">1</th>
+        <td>
+            ${pelicula.titulo}
+        </td>
+        <td>
+            <span class="text-truncate d-inline-block" style="max-width:200px;">
+                ${pelicula.descripcion}
+            </span>
+        </td>
+        <td>
+            <span class="text-truncate d-inline-block" style="max-width:190px;">
+                ${pelicula.imagen}
+            </span>
+        </td>
+        <td>${pelicula.genero}</td>
+        <td class="d-flex">
+            <button class="btn m-1 btn-warning"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn m-1 btn-danger"><i class="bi bi-x-square"></i></button>
+        </td>
+    </tr>
+    `
 }

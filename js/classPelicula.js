@@ -9,8 +9,8 @@ export default class Pelicula {
   #pais;
   #reparto;
 
-  constructor(codigo, titulo, descripcion, imagen, genero, anio, duracion, pais, reparto) {
-    this.#codigo = 0;
+  constructor(codigo = uuidv4(), titulo, descripcion, imagen, genero, anio, duracion, pais, reparto) {
+    this.#codigo = codigo;
     this.#titulo = titulo;
     this.#descripcion = descripcion;
     this.#imagen = imagen;
@@ -91,5 +91,19 @@ export default class Pelicula {
 
   set reparto(reparto) {
     this.#reparto = reparto;
+  }
+
+  toJSON(){
+    return {
+      codigo : this.codigo,
+      titulo : this.titulo,
+      descripcion : this.descripcion,
+      imagen : this.imagen,
+      genero : this.genero,
+      anio : this.anio,
+      duracion : this.duracion,
+      pais : this.pais,
+      reparto : this.reparto,
+    }
   }
 }
