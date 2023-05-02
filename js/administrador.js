@@ -86,15 +86,15 @@ function limpiarFormulario(){
 
 function cargaInicial(){
     if(listaPeliculas.length > 0){
-        listaPeliculas.map((pelicula) => crearFila(pelicula))
+        listaPeliculas.map((pelicula, posicion) => crearFila(pelicula, posicion + 1))
     }
 }
 
-function crearFila(pelicula){
+function crearFila(pelicula, fila){
     let tablaPelicula = document.getElementById('tablaPelicula');
     tablaPelicula.innerHTML += `
     <tr>
-        <th scope="row">1</th>
+        <th scope="row">${fila}</th>
         <td>
             ${pelicula.titulo}
         </td>
@@ -104,7 +104,7 @@ function crearFila(pelicula){
             </span>
         </td>
         <td>
-            <span class="text-truncate d-inline-block" style="max-width:190px;">
+            <span class="text-truncate d-inline-block" style="max-width:200px;">
                 ${pelicula.imagen}
             </span>
         </td>
@@ -115,4 +115,8 @@ function crearFila(pelicula){
         </td>
     </tr>
     `
+}
+
+function leerPelicula(){
+    localStorage.getItem('listaPelicula')
 }
