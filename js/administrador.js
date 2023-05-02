@@ -59,6 +59,15 @@ function crearPelicula(){
         listaPeliculas.push(peliculaNueva);
         //guardar listaPeliculas en localStorage
         guardarEnLocalStorage();
+        //dibujar fila en la tabla
+        crearFila(peliculaNueva, listaPeliculas.length);
+        //mostrar mensaje intuitivo
+        Swal.fire(
+            '¡Película creada!',
+            `Se creó ${peliculaNueva.titulo}`,
+            'success'
+        )
+        //limpiar los campos del formulario
         limpiarFormulario();
     }
 }
