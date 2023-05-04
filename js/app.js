@@ -15,5 +15,5 @@ function cambiarTema(color){
     color === 'dark' ? btnTheme.className = 'bi bi-moon-stars-fill' : btnTheme.className = 'bi bi-brightness-high-fill';
     document.querySelector('html').setAttribute('data-bs-theme', color);
     localStorage.setItem('theme', JSON.stringify(color));
-    console.log(color)
+    console.log(color);
 }

@@ -1,10 +1,10 @@
 const fechaActual = new Date(),
 anioActual = fechaActual.getFullYear(),
 regexImagenURL = /(https?:\/\/.*\.(?:png|jpg))/i,
-regexActores = /^([\w\s-]+,)*[\w\s-]+$/,
-generos = ['Acción', 'Animación', 'Aventura', 'Comedia', 'Documental', 'Drama', 'Familiar',
-    'Fantasía', 'Historia', 'Horror', 'Misterio', 'Música', 'Romance', 'Ciencia ficción', 'Terror',
-    'Suspenso', 'Bélico', 'Western'];
+regexActores = /^([\w\s-]+,)*[\w\s-]+$/;
+const generos = ['Acción', 'Animación', 'Aventura', 'Comedia', 'Documental', 'Drama', 'Familiar',
+'Fantasía', 'Historia', 'Horror', 'Misterio', 'Música', 'Romance', 'Ciencia ficción', 'Terror',
+'Suspenso', 'Bélico', 'Western'];
 
 function validarCantidadCaracteres(texto, min, max){
     if(texto.length >= min && texto.length <= max){

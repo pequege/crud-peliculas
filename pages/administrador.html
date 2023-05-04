@@ -88,13 +88,6 @@
     </div>
     <!-- modal editar pelicula -->
     <div class="modal fade" tabindex="-1" id="modalPelicula">
-     <!--  <div
-      class="modal fade"
-      id="modalPelicula"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    > -->
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -121,11 +114,8 @@
               </div>
               <div class="mb-3">
                 <label for="inputGenero" class="form-label">Género *</label>
-                <select class="form-select" aria-label="Default select example" id="inputGenero">
+                <select class="form-select" aria-label="Default select" id="inputGenero">
                   <option selected>Seleccionar género</option>
-                  <option value="Acción">Acción</option>
-                  <option value="Aventura">Aventura</option>
-                  <option value="Comedia">Comedia</option>
                 </select>
               </div>
               <div class="mb-3">
@@ -138,7 +128,9 @@
               </div>
               <div class="mb-3">
                 <label for="inputPais" class="form-label">País</label>
-                <input type="text" id="inputPais" class="form-control" placeholder="Ej: Argentina">
+                <select class="form-select" aria-label="Default select" id="inputPais">
+                  <option selected>Seleccionar país</option>
+                </select>
               </div>
               <div class="mb-3">
                 <label for="inputReparto" class="form-label">Reparto <span class="text-secondary">(Separado por comas ,)</span></label>
