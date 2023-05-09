@@ -17,9 +17,15 @@ function crearColumna(pelicula){
                 </p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary"><a href="pages/detalle.html" class="link-light text-decoration-none">Ver Detalle</a></button>
+                <button class="btn btn-primary" onclick="navegarPaginaDetalle('${pelicula.codigo}')">
+                    Ver Detalle
+                </button>
             </div>
         </div>
     </aside>
     `
+}
+
+function navegarPaginaDetalle(codigo){
+    window.location.href = window.location.origin + '/pages/detalle.html?codigo=' + codigo;
 }
